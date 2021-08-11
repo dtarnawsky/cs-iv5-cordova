@@ -8,11 +8,19 @@ import { Device } from '@ionic-enterprise/identity-vault';
 })
 export class HomePage implements OnInit {
 
-  constructor() {}
+  constructor() { }
 
   async ngOnInit() {
-    const data = await Device.getAvailableHardware();
-    alert(JSON.stringify(data));
+
+  }
+
+  async check() {
+    try {
+      const data = await Device.getAvailableHardware();
+      alert(JSON.stringify(data));
+    } catch (err) {
+      console.log(err);
+    }
   }
 
 }
