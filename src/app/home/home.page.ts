@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Device } from '@ionic-enterprise/identity-vault';
+import { VaultService } from '../vault.service';
 
 @Component({
   selector: 'app-home',
@@ -8,7 +9,7 @@ import { Device } from '@ionic-enterprise/identity-vault';
 })
 export class HomePage implements OnInit {
 
-  constructor() { }
+  constructor(private vaultService: VaultService) { }
 
   async ngOnInit() {
 
@@ -16,11 +17,17 @@ export class HomePage implements OnInit {
 
   async check() {
     try {
+      await this.vaultService.setData('blar', 'stuff');
+      await this.vaultService.lock();
       const data = await Device.getAvailableHardware();
-      alert(JSON.stringify(data));
+      console.log('getAvailableHardware', JSON.stringify(data));
     } catch (err) {
-      console.log(err);
+      console.error(err);
     }
+  }
+
+  async unlock() {
+    await this.vaultService.unlock();
   }
 
 }
