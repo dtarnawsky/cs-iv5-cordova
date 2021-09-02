@@ -43,7 +43,7 @@
     "@types/node": "^12.11.1",
     "@typescript-eslint/eslint-plugin": "4.16.1",
     "@typescript-eslint/parser": "4.16.1",
-    "cordova-android": "^10.0.1",
+    "cordova-android": "^10.1.0",
     "cordova-ios": "^6.2.0",
     "cordova-plugin-device": "2.0.2",
     "cordova-plugin-ionic-keyboard": "^2.0.5",
@@ -79,8 +79,8 @@
       "cordova-plugin-add-swift-support": {}
     },
     "platforms": [
-      "android",
-      "ios"
+      "ios",
+      "android"
     ]
   }
 }
