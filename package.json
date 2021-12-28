@@ -20,7 +20,6 @@
     "@angular/platform-browser": "~12.1.1",
     "@angular/platform-browser-dynamic": "~12.1.1",
     "@angular/router": "~12.1.1",
-    "@ionic-enterprise/identity-vault": "^5.0.2",
     "@ionic/angular": "^5.5.2",
     "cordova-plugin-add-swift-support": "^2.0.2",
     "rxjs": "~6.6.0",
@@ -37,6 +36,7 @@
     "@angular/compiler": "~12.1.1",
     "@angular/compiler-cli": "~12.1.1",
     "@angular/language-service": "~12.0.1",
+    "@ionic-enterprise/identity-vault": "^5.3.1",
     "@ionic/angular-toolkit": "^4.0.0",
     "@types/jasmine": "~3.6.0",
     "@types/jasminewd2": "~2.0.3",
@@ -74,9 +74,9 @@
       "cordova-plugin-device": {},
       "cordova-plugin-splashscreen": {},
       "cordova-plugin-ionic-keyboard": {},
-      "@ionic-enterprise/identity-vault": {},
       "cordova-plugin-ionic-webview": {},
-      "cordova-plugin-add-swift-support": {}
+      "cordova-plugin-add-swift-support": {},
+      "@ionic-enterprise/identity-vault": {}
     },
     "platforms": [
       "ios",

@@ -20,7 +20,7 @@ export class VaultService {
   vault: Vault | BrowserVault;
 
   constructor(private platform: Platform) {
-
+    this.vault = this.platform.is('cordova') ? new Vault(this.config) : new BrowserVault(this.config);
     this.init();
   }
 
@@ -28,8 +28,6 @@ export class VaultService {
     console.log('init');
     await this.platform.ready();
     console.log('init platform ready', this.platform.platforms());
-
-    this.vault = this.platform.is('cordova') ? new Vault(this.config) : new BrowserVault(this.config);
     this.vault.onLock(() => {
       console.log('Vault was locked');
     });
