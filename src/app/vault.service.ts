@@ -8,26 +8,26 @@ import { Platform } from '@ionic/angular';
 export class VaultService {
 
   config: IdentityVaultConfig = {
-    key: 'io.ionic.iv-test-cordova',
+    key: 'io.ionic.iv-test-cordova-4',
     type: VaultType.DeviceSecurity,
     deviceSecurityType: DeviceSecurityType.Both,
     lockAfterBackgrounded: 2,
     shouldClearVaultAfterTooManyFailedAttempts: false,
     customPasscodeInvalidUnlockAttempts: 10,
-    unlockVaultOnLoad: true,
+    unlockVaultOnLoad: false,
   };
 
   vault: Vault | BrowserVault;
 
   constructor(private platform: Platform) {
-    this.vault = this.platform.is('cordova') ? new Vault(this.config) : new BrowserVault(this.config);
     this.init();
   }
 
   async init() {
     console.log('init');
     await this.platform.ready();
-    console.log('init platform ready', this.platform.platforms());
+    this.vault = this.platform.is('cordova') ? new Vault(this.config) : new BrowserVault(this.config);
+    console.log(`init platform ready. Cordova = ${this.platform.is('cordova')}`);
     this.vault.onLock(() => {
       console.log('Vault was locked');
     });
@@ -40,11 +40,15 @@ export class VaultService {
   }
 
   async lock() {
+    console.log('lock started');
     await this.vault.lock();
+    console.log('lock ended');
   }
 
   async unlock() {
+    console.log('unlock started');
     await this.vault.unlock();
+    console.log('unlock ended');
   }
 
   async setData(key: string, value: string): Promise<void> {
